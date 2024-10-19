@@ -12,6 +12,7 @@ import androidx.media3.common.MediaItem
 import androidx.media3.exoplayer.ExoPlayer
 import androidx.media3.ui.PlayerView
 import com.mkandeel.exoplayerlocally.databinding.ActivityMainBinding
+import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,15 +29,21 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        enableEdgeToEdge()
         setContentView(binding.root)
 
         playerView = findViewById(R.id.player_view)
         setupViews()
 
+        val videos = listOf(
+            R.raw.video,
+            R.raw.video_2
+        )
+
         exoPlayer = ExoPlayer.Builder(this).build()
         playerView.player = exoPlayer
-        val videoUri = Uri.parse("android.resource://" + packageName + "/" + R.raw.video_2)
+
+        // play random video from list of videos
+        val videoUri = Uri.parse("android.resource://" + packageName + "/" + videos.random())
         // Create a MediaItem
         val mediaItem = MediaItem.fromUri(videoUri)
         // Set the media item to be played
