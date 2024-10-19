@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#63000000">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:id="@+id/video_controller_layout"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <!-- Rewind button -->
+        <ImageButton
+            android:id="@id/exo_rew"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@android:color/transparent"
+            android:src="@drawable/exo_icon_rewind"
+            app:tint="@color/white"
+            android:padding="16dp"/>
+
+        <!-- Play/Pause button -->
+        <ImageButton
+            android:id="@id/exo_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="16dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exo_rew"
+            android:src="@drawable/exo_icon_pause" />
+
+        <!-- Forward button -->
+        <ImageButton
+            android:id="@id/exo_ffwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/exo_play"
+            android:src="@drawable/exo_icon_fastforward"
+            app:tint="@color/white"
+            android:padding="16dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#333333"
+        android:paddingBottom="10dp"
+        android:id="@+id/controller_layout"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.media3.ui.DefaultTimeBar
+            android:id="@+id/exo_progress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <!-- Settings button -->
+        <ImageButton
+            android:id="@id/exo_settings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toStartOf="@+id/exo_fullscreen_icon"
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/exo_icon_settings" />
+
+        <!-- Fullscreen button -->
+        <ImageButton
+            android:id="@+id/exo_fullscreen_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:contentDescription="FullScreen"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            android:src="@drawable/enter_fullscreen_icon" />
+
+        <TextView
+            android:id="@id/exo_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="00:00"
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            app:layout_constraintStart_toEndOf="@id/exo_position"
+            android:textColor="@color/white"
+            android:text=" . "
+            android:id="@+id/exo_dot"/>
+
+        <TextView
+            android:id="@id/exo_duration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/exo_dot"
+            app:layout_constraintTop_toBottomOf="@id/exo_progress"
+            android:textColor="@color/white"
+
+            android:text="00:00" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
